@@ -1,8 +1,8 @@
 let menuData = [
     { 
         id: 'sate-ayam', 
-        name_bm: 'Sate Ayam Pasaran', 
-        name_en: 'Market Chicken Sate', 
+        name_bm: 'Sate Ayam', 
+        name_en: 'Chicken Sate', 
         desc_bm: 'Daging dada ayam fresh diperap serai wangi, memang empuk & juicy gila.', 
         desc_en: 'Fresh chicken breast marinated in lemongrass, super tender & juicy.', 
         price: 1.20, 
@@ -14,8 +14,8 @@ let menuData = [
     },
     { 
         id: 'sate-daging', 
-        name_bm: 'Sate Daging Batang Pinang', 
-        name_en: 'Tenderloin Beef Sate', 
+        name_bm: 'Sate Daging', 
+        name_en: 'Beef Sate', 
         desc_bm: 'Daging lembu premium tak ada lemak, lembut gila bila kunyah.', 
         desc_en: 'Premium lean beef cutlets with rich traditional spices. So soft!', 
         price: 1.50, 
@@ -27,8 +27,8 @@ let menuData = [
     },
     { 
         id: 'sate-kambing', 
-        name_bm: 'Sate Kambing Lumayan', 
-        name_en: 'Juicy Mutton Sate', 
+        name_bm: 'Sate Kambing', 
+        name_en: 'Mutton Sate', 
         desc_bm: 'Daging kambing empuk kaw-kaw, tak ada bau hamis & penuh rempah.', 
         desc_en: 'Juicy local mutton cuts seasoned to perfection. No gamey smell.', 
         price: 2.50, 
@@ -40,8 +40,8 @@ let menuData = [
     },
     { 
         id: 'nasi-impit', 
-        name_bm: 'Nasi Impit Padat', 
-        name_en: 'Traditional Rice Cake', 
+        name_bm: 'Nasi Impit', 
+        name_en: 'Rice Cake', 
         desc_bm: 'Nasi impit kiub (1 ketul = 4 potong), ngam sangat layan dengan kuah kacang.', 
         desc_en: 'Compressed rice cakes (1 piece = 4 cuts), perfect match for peanut sauce.', 
         price: 1.00, 
@@ -57,13 +57,12 @@ let weeklySchedule = [
     { id: 1, day_name_bm: 'Isnin', day_name_en: 'Monday', location_name_bm: 'Pasar Malam Taman ABC', location_name_en: 'Taman ABC Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+ABC' },
     { id: 2, day_name_bm: 'Selasa', day_name_en: 'Tuesday', location_name_bm: 'Tapak Niaga Keramat', location_name_en: 'Keramat Trading Site', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Keramat' },
     { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Stall Closed', operating_hours: '-', is_closed: true, maps_url: '#' },
-    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
+    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Campung+Baru+Kuala+Lumpur' },
     { id: 5, day_name_bm: 'Jumaat', day_name_en: 'Friday', location_name_bm: 'Tapak Niaga Setiawangsa', location_name_en: 'Setiawangsa Trading Site', operating_hours: '5:00 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Setiawangsa' },
     { id: 6, day_name_bm: 'Sabtu', day_name_en: 'Saturday', location_name_bm: 'Pasar Malam Melawati', location_name_en: 'Melawati Night Market', operating_hours: '4:30 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+Melawati' },
     { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
 ];
 
-// Database Bahasa Rojak / Slang Moden (Kecuali Pengekalan Jenama Satay Pak Mat)
 const translations = {
     ms: {
         "nav-home": "Home", "nav-about": "Kisah Kami", "nav-menu": "Menu", "nav-location": "Lokasi",
@@ -78,7 +77,8 @@ const translations = {
         "form-name": "Nama Penuh *", "form-loc": "Drop-off / Lokasi Ambil *", "form-time": "Jam Nak Ambil *",
         "cart-btn": "Send Order ke WhatsApp", "loc-badge": "Shop Status", "loc-title": "Port Berniaga Hari Ini",
         "loc-today-title": "Hari ini kita setup booth kat:", "loc-btn-maps": "Waze / Google Maps Ke Sini",
-        "loc-table-title": "Jadual Tapak Niaga Mingguan", "tag-today": "LIVE NOW", "placeholder-name": "Taip nama penuh anda"
+        "loc-table-title": "Jadual Tapak Niaga Mingguan", "tag-today": "LIVE NOW", "placeholder-name": "Taip nama penuh anda",
+        "cart-reset": "Clear Semua"
     },
     en: {
         "nav-home": "Home", "nav-about": "Our Story", "nav-menu": "Menu", "nav-location": "Location",
@@ -93,7 +93,8 @@ const translations = {
         "form-name": "Full Name *", "form-loc": "Pick-up Point *", "form-time": "Pick-up Time *",
         "cart-btn": "Send Order to WhatsApp", "loc-badge": "Stall Analytics", "loc-title": "Where We At Today",
         "loc-today-title": "Today we are operating at:", "loc-btn-maps": "Open Google Maps Route",
-        "loc-table-title": "Weekly Night Market Location Schedule", "tag-today": "TODAY", "placeholder-name": "Type your full name here"
+        "loc-table-title": "Weekly Night Market Location Schedule", "tag-today": "TODAY", "placeholder-name": "Type your full name here",
+        "cart-reset": "Reset Cart"
     }
 };
 
@@ -159,7 +160,8 @@ function renderMenu() {
                         <button onclick="changeQtyOneByOne('${item.id}', -1)" class="text-gray-400 hover:text-red-500 px-3 py-1 font-bold text-sm transition">-</button>
                         
                         <div class="flex items-center space-x-1">
-                            <input type="number" min="0" max="${item.max}" value="${qty}" id="input-qty-${item.id}" onchange="validateAndInputQty('${item.id}', this.value)" class="w-10 text-center bg-transparent text-white font-mono font-bold text-xs focus:outline-none">
+                            <!-- Tukar ke oninput untuk update 100% Real-Time masa user tengah menaip -->
+                            <input type="number" min="0" max="${item.max}" value="${qty}" id="input-qty-${item.id}" oninput="liveQtyInput('${item.id}', this.value)" class="w-10 text-center bg-transparent text-white font-mono font-bold text-xs focus:outline-none">
                             <span class="text-gray-500 text-[10px] font-bold pr-1">${unit}</span>
                         </div>
                         
@@ -191,25 +193,27 @@ function changeQtyOneByOne(itemId, change) {
     updateCartDOM();
 }
 
-function validateAndInputQty(itemId, val) {
+// Fungsi Input Real-Time Serta-merta Semasa Menaip
+function liveQtyInput(itemId, val) {
     let parsed = parseInt(val);
     const item = menuData.find(m => m.id === itemId);
 
     if (isNaN(parsed) || parsed <= 0) {
         delete cartState[itemId];
-        document.getElementById(`input-qty-${itemId}`).value = 0;
     } else {
-        if (parsed < item.min) {
-            alert(`Paling sikit kena order ${item.min} ${item.unit_bm} bro!`);
-            parsed = item.min;
-        }
-        if (parsed > item.max) {
-            alert(`Maksimum order ${item.max} ${item.unit_bm} je sekali borong!`);
-            parsed = item.max;
-        }
+        if (parsed > item.max) parsed = item.max;
         cartState[itemId] = parsed;
-        document.getElementById(`input-qty-${itemId}`).value = parsed;
     }
+    updateCartDOM();
+}
+
+// Fungsi Reset Order Butang
+function resetOrder() {
+    cartState = {};
+    menuData.forEach(item => {
+        const element = document.getElementById(`input-qty-${item.id}`);
+        if (element) element.value = 0;
+    });
     updateCartDOM();
 }
 
@@ -226,6 +230,16 @@ function updateCartDOM() {
         return;
     }
 
+    // Suntik Butang Reset Di Atas Senarai Order List
+    const resetText = translations[currentLang]['cart-reset'];
+    container.innerHTML += `
+        <div class="flex justify-end pb-2">
+            <button onclick="resetOrder()" class="text-red-400 hover:text-red-500 font-bold text-[11px] uppercase flex items-center space-x-1 transition duration-200">
+                <i class="fa-solid fa-trash-can"></i>
+                <span>${resetText}</span>
+            </button>
+        </div>`;
+
     keys.forEach(id => {
         const item = menuData.find(m => m.id === id);
         const name = currentLang === 'ms' ? item.name_bm : item.name_en;
@@ -234,7 +248,7 @@ function updateCartDOM() {
         total += sub;
 
         container.innerHTML += `
-            <div class="flex justify-between items-center py-2.5">
+            <div class="flex justify-between items-center py-2.5 border-b border-neutral-800/50">
                 <div>
                     <span class="text-white font-bold block">${name}</span>
                     <span class="text-neutral-500 text-[11px]">${cartState[id]} ${unit} x RM ${item.price.toFixed(2)}</span>
