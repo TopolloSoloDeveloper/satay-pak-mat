@@ -3,137 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satay Pak Mat | Reka Bentuk Premium & Interaktif</title>
+    <title>Satay Pak Mat | Reka Bentuk Mobile-First Premium</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Palet Warna Mengikut Personality Pilihan: Blue, Black, White & Amber Accents */
-        .bg-section-dark { background-color: #0d1117; } /* Deep Blue-Black */
-        .bg-section-charcoal { background-color: #161b22; } /* Charcoal Dark */
-        .bg-section-cream { background-color: #f8f9fa; color: #111827; } /* Soft White-Cream */
-        .card-premium { background-color: #21262d; border: 1px border-[#30363d]; }
+        /* Tetapan Palet Warna Berkontras Tinggi Mengikut Identiti Jenama */
+        .bg-app-dark { background-color: #0b0f17; } /* Latar belakang utama (Deep Blue-Black) */
+        .bg-card-dark { background-color: #161b22; } /* Warna kad & seksyen (Charcoal) */
+        .bg-input-dark { background-color: #0d1117; }
         
-        /* Custom Smooth Transitions Matrix */
-        .btn-pop { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .btn-pop:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); }
-        
-        .card-rotate { transition: all 0.5s ease; }
-        .card-rotate:hover { transform: translateY(-8px) rotate(0.5deg); border-color: #f59e0b; }
+        /* Simetri Khas untuk Paparan Mobile-First (App-like Feel) */
+        @media (max-width: 640px) {
+            .mobile-container { padding-left: 1rem; padding-right: 1rem; }
+            .hero-title-size { font-size: 2.25rem; line-height: 2.5rem; }
+        }
 
-        .text-glow { transition: all 0.3s ease; }
-        .text-glow:hover { color: #ffffff; text-shadow: 0 0 10px rgba(245, 158, 11, 0.6); transform: translateX(4px); }
+        /* Variasi Animasi Transition Rawak & Interaktif */
+        .hover-bounce { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-bounce:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(245, 158, 11, 0.25); }
+        
+        .hover-lift { transition: transform 0.3s ease, border-color 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); border-color: #f59e0b; }
+
+        .hover-glow:hover { text-shadow: 0 0 8px rgba(245, 158, 11, 0.6); color: #ffffff; }
     </style>
 </head>
-<body class="bg-section-dark text-gray-200 font-sans antialiased">
+<body class="bg-app-dark text-gray-200 font-sans antialiased selection:bg-amber-500 selection:text-black">
 
     <!-- Emergency Floating Banner -->
-    <div id="emergency-banner" class="hidden fixed top-0 left-0 w-full bg-red-600 text-white z-50 shadow-lg">
+    <div id="emergency-banner" class="hidden fixed top-0 left-0 w-full bg-red-600 text-white z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <p id="emergency-text" class="text-sm font-bold tracking-wide"></p>
-            <button onclick="document.getElementById('emergency-banner').classList.add('hidden')" class="text-white hover:scale-125 transition"><i class="fa-solid fa-xmark"></i></button>
+            <p id="emergency-text" class="text-xs font-bold tracking-wide"></p>
+            <button onclick="document.getElementById('emergency-banner').classList.add('hidden')" class="text-white p-1"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="sticky top-0 bg-[#0d1117]/95 backdrop-blur-md border-b border-neutral-800 z-40 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-            <a href="#" class="text-2xl font-black text-white uppercase tracking-wider transition transform hover:skew-x-3 duration-300">Satay <span class="text-amber-500">Pak Mat</span></a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#home" class="text-glow inline-block" data-i18n="nav-home">Utama</a>
-                <a href="#about" class="text-glow inline-block" data-i18n="nav-about">Asal Usul</a>
-                <a href="#menu" class="text-glow inline-block" data-i18n="nav-menu">Menu</a>
-                <a href="#location" class="text-glow inline-block" data-i18n="nav-location">Lokasi</a>
+    <nav class="sticky top-0 bg-[#0b0f17]/95 backdrop-blur-md border-b border-neutral-800 z-40">
+        <div class="max-w-7xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
+            <a href="#" class="text-xl sm:text-2xl font-black text-white uppercase tracking-wider">Satay <span class="text-amber-500">Pak Mat</span></a>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#home" class="hover-glow transition duration-200" data-i18n="nav-home">Utama</a>
+                <a href="#about" class="hover-glow transition duration-200" data-i18n="nav-about">Asal Usul</a>
+                <a href="#menu" class="hover-glow transition duration-200" data-i18n="nav-menu">Menu</a>
+                <a href="#location" class="hover-glow transition duration-200" data-i18n="nav-location">Lokasi</a>
             </div>
-            <button id="lang-toggle" onclick="toggleLanguage()" class="bg-neutral-800 text-xs px-3 py-1.5 rounded-full border border-neutral-700 font-bold hover:bg-amber-500 hover:text-black transition-all duration-300">🇲🇾 BM</button>
+            <button id="lang-toggle" onclick="toggleLanguage()" class="bg-neutral-800 text-xs px-3 py-1.5 rounded-full border border-neutral-700 font-bold hover:bg-amber-500 hover:text-black transition">🇲🇾 BM</button>
         </div>
     </nav>
 
-    <!-- Headline Hero Section dengan Latar Belakang Gambar Bakar Satay Sebenar -->
-    <section id="home" class="relative min-h-[90vh] flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-700" style="background-image: linear-gradient(rgba(13, 17, 23, 0.65), rgba(13, 17, 23, 0.95)), url('https://images.unsplash.com/photo-1529692236671-f1f6e994a529?auto=format&fit=crop&w=1920&q=80');">
-        <div class="text-center max-w-4xl mx-auto px-4">
-            <span class="text-amber-400 text-xs font-black tracking-widest uppercase block mb-4 transition duration-500 hover:tracking-xl cursor-default" data-i18n="hero-sub">Original Malaysian Satay Recipe Since 1988</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase transition duration-500 transform hover:scale-95" data-i18n="hero-title">Segar Dari Bara Api Setiap Hari</h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light transition hover:text-white duration-300" data-i18n="hero-desc">Daging premium diperap rapi bersama ramuan herba tradisional asli, dibakar sempurna.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#menu" class="btn-pop bg-amber-500 text-black font-bold px-8 py-4 rounded-xl uppercase tracking-wider text-sm text-center" data-i18n="hero-btn-view">Lihat Menu</a>
-                <a href="#location" class="btn-pop bg-neutral-900 border border-neutral-700 text-white font-semibold px-8 py-4 rounded-xl text-sm text-center" data-i18n="hero-btn-loc">Lokasi Hari Ini</a>
+    <!-- Headline Hero Section dengan Gambar Latar Belakang Grill Satay Penuh -->
+    <section id="home" class="relative min-h-[85vh] flex items-center justify-center bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(11, 15, 23, 0.7), rgba(11, 15, 23, 0.95)), url('https://images.unsplash.com/photo-1529692236671-f1f6e994a529?auto=format&fit=crop&w=1920&q=80');">
+        <div class="text-center max-w-3xl mx-auto px-4 py-12 mobile-container">
+            <span class="text-amber-400 text-xs sm:text-sm font-black tracking-widest uppercase block mb-3" data-i18n="hero-sub">Original Malaysian Satay Recipe Since 1988</span>
+            <h1 class="hero-title-size text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 uppercase" data-i18n="hero-title">Segar Dari Bara Api Setiap Hari</h1>
+            <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-10 font-light leading-relaxed" data-i18n="hero-desc">Daging premium diperap rapi bersama ramuan herba tradisional asli, dibakar sempurna.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
+                <a href="#menu" class="hover-bounce bg-amber-500 text-black font-bold px-8 py-3.5 rounded-xl uppercase tracking-wider text-xs sm:text-sm text-center" data-i18n="hero-btn-view">Lihat Menu</a>
+                <a href="#location" class="hover-bounce bg-neutral-900/90 border border-neutral-700 text-white font-semibold px-8 py-3.5 rounded-xl text-xs sm:text-sm text-center" data-i18n="hero-btn-loc">Lokasi Hari Ini</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section (Warna Bertukar: Menggunakan Latar Belakang Charcoal) -->
-    <section id="about" class="bg-section-charcoal py-24 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-wide transition transform hover:translate-x-2 duration-300" data-i18n="about-title">Warisan Cita Rasa Tradisional</h2>
-                <p class="text-gray-400 leading-relaxed font-light transition hover:text-gray-300" data-i18n="about-p1">Kami mengekalkan kaedah perapan kuno selama 12 jam menggunakan arang kayu asli bagi membangkitkan aroma asap semulajadi yang unik.</p>
-            </div>
-            <!-- Gambar Asap & Grilling Proses Sebenar -->
-            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" class="rounded-2xl border border-neutral-800 w-full object-cover h-[350px] shadow-2xl transition transform hover:rotate-1 hover:scale-105 duration-500">
-        </div>
-    </section>
-
-    <!-- Digital Menu Section (Warna Bertukar: Menggunakan Latar Belakang Deep Blue-Black) -->
-    <section id="menu" class="bg-section-dark py-24 border-t border-b border-neutral-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-white uppercase transition hover:scale-105 duration-300" data-i18n="menu-title">Menu & Pengiraan Tempahan</h2>
-                <p class="text-gray-500 mt-2 font-light" data-i18n="menu-desc">Tulis sendiri kuantiti atau tekan butang tambah/tolak 1 demi 1.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-                <!-- Grid Menu Yang Mempunyai Gambar Makanan Sebenar & Tepat -->
-                <div id="menu-container" class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- JavaScript akan memasukkan item menu di sini -->
-                </div>
-
-                <!-- Bagian Pengiraan / Cart Summary -->
-                <div class="card-premium p-6 rounded-2xl border border-neutral-800 sticky top-28 shadow-2xl transition transform hover:shadow-amber-500/5 duration-500">
-                    <h3 class="text-white font-bold text-xl mb-4 flex items-center justify-between"><span data-i18n="cart-title">Rumusan Pesanan</span><i class="fa-solid fa-basket-shopping text-amber-500 animate-pulse"></i></h3>
-                    <div id="cart-items" class="divide-y divide-neutral-800 text-sm max-h-60 overflow-y-auto mb-4"></div>
-                    <div class="border-t border-neutral-800 pt-4 mb-6"><div class="flex justify-between items-center font-bold text-white text-lg"><span data-i18n="cart-total">Jumlah Anggaran:</span><span class="text-amber-500 font-mono" id="cart-total-price">RM 0.00</span></div></div>
-                    
-                    <div class="space-y-4 text-sm mb-6">
-                        <div><label class="block text-gray-400 font-medium mb-1.5" data-i18n="form-name">Nama Penuh *</label><input type="text" id="order-name" required placeholder="Nama anda" class="w-full bg-[#121212] border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition duration-300"></div>
-                        <div><label class="block text-gray-400 font-medium mb-1.5" data-i18n="form-loc">Lokasi Pengambilan *</label><select id="order-location" class="w-full bg-[#121212] border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition duration-300"></select></div>
-                        <div><label class="block text-gray-400 font-medium mb-1.5" data-i18n="form-time">Waktu Pengambilan Semasa *</label><input type="time" id="order-time" required class="w-full bg-[#121212] border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition duration-300"></div>
-                    </div>
-                    <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl flex items-center justify-center space-x-2 transition duration-300 transform hover:-translate-y-1 uppercase text-xs tracking-wider"><i class="fa-brands fa-whatsapp text-lg"></i><span data-i18n="cart-btn">Hantar Tempahan WhatsApp</span></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location System (Warna Bertukar: Menggunakan Latar Belakang Kontras Cerah Premium - Cream/White) -->
-    <section id="location" class="bg-section-cream py-24 text-gray-900 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+    <!-- About Section (Seksyen Berciri Kad Charcoal) -->
+    <section id="about" class="bg-card-dark py-20 border-t border-b border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 mobile-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-4">
-                <span class="text-xs bg-amber-500/20 text-amber-700 font-extrabold px-3 py-1 rounded-full uppercase">Status Kedai</span>
-                <h2 class="text-3xl font-black text-gray-900 uppercase tracking-tight">Lokasi Aktif Hari Ini</h2>
-                
-                <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transition transform hover:scale-102 duration-300">
-                    <div class="text-gray-500 text-xs uppercase font-bold">Hari Ini Kami Berniaga Di:</div>
-                    <div id="today-location-display" class="text-gray-900 font-black text-2xl uppercase mt-1">Memuatkan Lokasi Live...</div>
-                    <div id="today-hours-display" class="text-amber-600 font-bold text-sm mt-1"></div>
+                <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-wide" data-i18n="about-title">Warisan Cita Rasa Tradisional</h2>
+                <p class="text-gray-400 text-sm leading-relaxed font-light" data-i18n="about-p1">Kami mengekalkan kaedah perapan kuno selama 12 jam menggunakan arang kayu asli bagi membangkitkan aroma asap semulajadi yang unik.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" class="rounded-2xl border border-neutral-800 w-full object-cover h-[280px] sm:h-[350px] shadow-xl">
+        </div>
+    </section>
+
+    <!-- Digital Menu Section (App Layout Viewport Simetri) -->
+    <section id="menu" class="bg-app-dark py-20">
+        <div class="max-w-7xl mx-auto px-4 mobile-container">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-black text-white uppercase" data-i18n="menu-title">Menu & Pengiraan Tempahan</h2>
+                <p class="text-gray-500 text-xs mt-2 font-light" data-i18n="menu-desc">Tulis kuantiti secara manual atau tekan butang tambah/tolak untuk perubahan 1 demi 1.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Grid Menu (Gambar Telah Dibetulkan) -->
+                <div id="menu-container" class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <!-- Hidangan dipaparkan secara dinamik melalui JavaScript -->
+                </div>
+
+                <!-- Bagian Rumusan Pengiraan Kuantiti / Borang -->
+                <div class="bg-card-dark p-5 sm:p-6 rounded-2xl border border-neutral-800 sticky top-24 shadow-2xl">
+                    <h3 class="text-white font-bold text-lg mb-4 flex items-center justify-between"><span data-i18n="cart-title">Rumusan Pesanan</span><i class="fa-solid fa-basket-shopping text-amber-500"></i></h3>
+                    <div id="cart-items" class="divide-y divide-neutral-800 text-xs max-h-48 overflow-y-auto mb-4"></div>
+                    <div class="border-t border-neutral-800 pt-4 mb-6"><div class="flex justify-between items-center font-bold text-white text-base"><span data-i18n="cart-total">Jumlah Anggaran:</span><span class="text-amber-500 font-mono text-lg" id="cart-total-price">RM 0.00</span></div></div>
                     
-                    <!-- Butang Navigasi Dinamik Pintar Yang Berubah Mengikut Hari Real-Time -->
+                    <div class="space-y-4 text-xs mb-6">
+                        <div><label class="block text-gray-400 font-medium mb-1" data-i18n="form-name">Nama Penuh *</label><input type="text" id="order-name" required placeholder="Nama penuh anda" class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition"></div>
+                        <div><label class="block text-gray-400 font-medium mb-1" data-i18n="form-loc">Lokasi Pengambilan *</label><select id="order-location" class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition"></select></div>
+                        <div><label class="block text-gray-400 font-medium mb-1" data-i18n="form-time">Waktu Pengambilan Semasa *</label><input type="time" id="order-time" required class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition"></div>
+                    </div>
+                    <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center space-x-2 transition uppercase text-xs tracking-wider"><i class="fa-brands fa-whatsapp text-base"></i><span data-i18n="cart-btn">Hantar Tempahan WhatsApp</span></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location System (TELAH DIUBAH SUAI: Latar belakang gelap berkontras tinggi, Teks Sangat Jelas & User Friendly) -->
+    <section id="location" class="bg-card-dark py-20 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 mobile-container grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div class="space-y-4">
+                <span class="text-[10px] bg-amber-500/10 text-amber-400 font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">Status Kedai</span>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tight">Lokasi Aktif Hari Ini</h2>
+                
+                <div class="bg-app-dark p-5 rounded-xl border border-neutral-800 shadow-lg">
+                    <div class="text-neutral-500 text-[10px] uppercase font-bold tracking-wider">Hari Ini Kami Berniaga Di:</div>
+                    <div id="today-location-display" class="text-white font-black text-xl uppercase mt-1 tracking-wide">Memuatkan lokasi...</div>
+                    <div id="today-hours-display" class="text-amber-400 font-bold text-xs mt-1"></div>
+                    
                     <div class="pt-4">
-                        <a id="live-google-maps-btn" href="#" target="_blank" class="w-full inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-3 rounded-xl shadow-lg transition duration-300 text-sm transform hover:translate-y-[-2px]">
+                        <a id="live-google-maps-btn" href="#" target="_blank" class="w-full inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-xl shadow transition text-xs uppercase tracking-wide">
                             <i class="fa-solid fa-map-location-dot mr-2"></i> Buka Google Maps Lokasi Hari Ini
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                <div class="p-6 border-b border-gray-100"><h3 class="text-gray-900 font-bold text-lg">Jadual Kontingensi Operasi Mingguan</h3></div>
-                <div id="weekly-schedule-container" class="divide-y divide-gray-100"></div>
+            
+            <div class="lg:col-span-2 bg-app-dark rounded-xl border border-neutral-800 overflow-hidden shadow-lg">
+                <div class="p-4 sm:p-5 border-b border-neutral-800"><h3 class="text-white font-bold text-sm uppercase tracking-wider">Jadual Kontingensi Operasi Mingguan</h3></div>
+                <div id="weekly-schedule-container" class="divide-y divide-neutral-800 text-xs">
+                    <!-- Senarai diisi secara real-time menerusi javascript -->
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#0b0b0b] py-8 text-center text-xs text-neutral-600">
-        <p>&copy; 2026 Satay Pak Mat. Reka Bentuk Dinamik, Interaktif & Real-time.</p>
+    <footer class="bg-[#070a0f] py-8 text-center text-[10px] text-neutral-600 border-t border-neutral-900">
+        <p>&copy; 2026 Satay Pak Mat. Reka Bentuk Simetri Mobile-First & Kontras Tinggi.</p>
     </footer>
 
     <script src="assets/js/app.js"></script>
