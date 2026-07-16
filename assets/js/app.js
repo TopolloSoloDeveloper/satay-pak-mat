@@ -1,4 +1,4 @@
-// Pengurusan Imej Tersendiri & Tepat Untuk Setiap Hidangan (High Contrast Unsplash Resolution)
+// Pengurusan Imej Menggunakan Fail WebP Tempatan Kosong Sedia Diupload Ke GitHub
 let menuData = [
     { 
         id: 'satay-ayam', 
@@ -9,7 +9,7 @@ let menuData = [
         price: 1.20, 
         unit_bm: 'cucuk', 
         unit_en: 'stick', 
-        image_url: 'https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=500&q=80' // Gambar closeup satay ayam dibakar jelas
+        image_url: 'menu1.webp' 
     },
     { 
         id: 'satay-daging', 
@@ -20,7 +20,7 @@ let menuData = [
         price: 1.50, 
         unit_bm: 'cucuk', 
         unit_en: 'stick', 
-        image_url: 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=500&q=80' // Gambar satay daging atas pemanggang
+        image_url: 'menu2.webp' 
     },
     { 
         id: 'satay-kambing', 
@@ -31,7 +31,7 @@ let menuData = [
         price: 2.00, 
         unit_bm: 'cucuk', 
         unit_en: 'stick', 
-        image_url: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=500&q=80' // Gambar satay kambing/daging bakar
+        image_url: 'menu3.webp' 
     },
     { 
         id: 'nasi-impit', 
@@ -42,16 +42,16 @@ let menuData = [
         price: 2.00, 
         unit_bm: 'biji', 
         unit_en: 'pcs', 
-        image_url: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=500&q=80' // Gambar kuah kacang/nasi tradisi
+        image_url: 'menu4.webp' 
     }
 ];
 
-// Pautan Koordinat Pasar Malam Mengikut Hari Real-Time (Google Maps Sebenar)
+// Jadual Lokasi Mingguan Bersama Pautan Google Maps Real-Time Mengikut Hari
 let weeklySchedule = [
     { id: 1, day_name_bm: 'Isnin', day_name_en: 'Monday', location_name_bm: 'Pasar Malam Taman ABC', location_name_en: 'Taman ABC Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+ABC' },
     { id: 2, day_name_bm: 'Selasa', day_name_en: 'Tuesday', location_name_bm: 'Tapak Niaga Keramat', location_name_en: 'Keramat Trading Site', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Keramat' },
     { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' },
-    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
+    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Khamis', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
     { id: 5, day_name_bm: 'Jumaat', day_name_en: 'Friday', location_name_bm: 'Tapak Niaga Setiawangsa', location_name_en: 'Setiawangsa Trading Site', operating_hours: '5:00 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Setiawangsa' },
     { id: 6, day_name_bm: 'Sabtu', day_name_en: 'Saturday', location_name_bm: 'Pasar Malam Melawati', location_name_en: 'Melawati Night Market', operating_hours: '4:30 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+Melawati' },
     { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
@@ -79,17 +79,12 @@ function toggleLanguage() {
 function renderMenu() {
     const container = document.getElementById('menu-container');
     container.innerHTML = '';
-    
-    // Senarai rawak class transition untuk elemen interaktif dinamik
     const hoverTransitions = ['hover-lift', 'hover-bounce'];
 
     menuData.forEach((item, index) => {
         const name = currentLang === 'ms' ? item.name_bm : item.name_en;
         const desc = currentLang === 'ms' ? item.desc_bm : item.desc_en;
-        const unit = currentLang === 'ms' ? item.unit_bm : item.unit_en;
         const qty = cartState[item.id] || 0;
-        
-        // Memilih transition berbeza secara bergilir-gilir (randomized interaction layout)
         const chosenTransition = hoverTransitions[index % hoverTransitions.length];
 
         container.innerHTML += `
@@ -106,12 +101,8 @@ function renderMenu() {
                 </div>
                 <div class="p-4 pt-0">
                     <div class="flex items-center justify-between mt-3 bg-input-dark rounded-lg border border-neutral-800 p-1">
-                        <!-- Perubahan Kuantiti 1 demi 1 -->
                         <button onclick="changeQtyOneByOne('${item.id}', -1)" class="text-gray-400 hover:text-red-500 px-3 py-1 font-bold text-sm transition">-</button>
-                        
-                        <!-- Input field untuk ditaip sendiri -->
                         <input type="number" min="0" value="${qty}" id="input-qty-${item.id}" oninput="manualQtyInput('${item.id}', this.value)" class="w-12 text-center bg-transparent text-white font-mono font-bold text-xs focus:outline-none">
-                        
                         <button onclick="changeQtyOneByOne('${item.id}', 1)" class="text-gray-400 hover:text-emerald-400 px-3 py-1 font-bold text-sm transition">+</button>
                     </div>
                 </div>
@@ -169,7 +160,6 @@ function updateCartDOM() {
     totalDisplay.innerText = `RM ${total.toFixed(2)}`;
 }
 
-// Menetapkan Kedai Mengikut Waktu & Jadual Komputer Sistem Pelanggan (Real-Time)
 function initRealTimeLocationSystem() {
     let dayIdx = new Date().getDay(); 
     if (dayIdx === 0) dayIdx = 7; 
@@ -200,13 +190,11 @@ function initRealTimeLocationSystem() {
 function renderWeeklySchedule() {
     const container = document.getElementById('weekly-schedule-container');
     container.innerHTML = '';
-    
     let currentDayIdx = new Date().getDay();
     if (currentDayIdx === 0) currentDayIdx = 7;
 
     weeklySchedule.forEach(day => {
         const isToday = day.id === currentDayIdx;
-        // Warna kontras khusus (bg-neutral-900 jika hari ini) untuk paparan gelap mesra pengguna
         const activeRowClass = isToday ? 'bg-amber-500/10 border-l-4 border-amber-500 font-bold' : '';
 
         container.innerHTML += `
