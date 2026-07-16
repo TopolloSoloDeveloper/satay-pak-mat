@@ -1,46 +1,54 @@
 let menuData = [
     { 
-        id: 'satay-ayam', 
-        name_bm: 'Satay Ayam Pasaran', 
-        name_en: 'Market Chicken Satay', 
+        id: 'sate-ayam', 
+        name_bm: 'Sate Ayam Pasaran', 
+        name_en: 'Market Chicken Sate', 
         desc_bm: 'Daging dada ayam segar diperap serai wangi, empuk & juicy.', 
         desc_en: 'Fresh chicken breast marinated in heritage lemongrass formulation.', 
         price: 1.20, 
         unit_bm: 'cucuk', 
-        unit_en: 'stick', 
+        unit_en: 'cucuk',
+        min: 10,
+        max: 1000,
         image_url: 'menu1.webp' 
     },
     { 
-        id: 'satay-daging', 
-        name_bm: 'Satay Daging Batang Pinang', 
-        name_en: 'Tenderloin Beef Satay', 
+        id: 'sate-daging', 
+        name_bm: 'Sate Daging Batang Pinang', 
+        name_en: 'Tenderloin Beef Sate', 
         desc_bm: 'Daging lembu premium tanpa lemak, tekstur lembut dikunyah.', 
         desc_en: 'Lean premium beef cutlets injected with rich local traditional spices.', 
         price: 1.50, 
         unit_bm: 'cucuk', 
-        unit_en: 'stick', 
+        unit_en: 'cucuk',
+        min: 10,
+        max: 1000,
         image_url: 'menu2.webp' 
     },
     { 
-        id: 'satay-kambing', 
-        name_bm: 'Satay Kambing Lumayan', 
-        name_en: 'Juicy Mutton Satay', 
+        id: 'sate-kambing', 
+        name_bm: 'Sate Kambing Lumayan', 
+        name_en: 'Juicy Mutton Sate', 
         desc_bm: 'Daging kambing empuk premium tanpa bau hamis, kaya rempah.', 
         desc_en: 'Juicy local mutton cuts seasoned to absolute perfection.', 
-        price: 2.00, 
+        price: 2.50, 
         unit_bm: 'cucuk', 
-        unit_en: 'stick', 
+        unit_en: 'cucuk',
+        min: 10,
+        max: 1000,
         image_url: 'menu3.webp' 
     },
     { 
         id: 'nasi-impit', 
         name_bm: 'Nasi Impit Padat', 
         name_en: 'Traditional Rice Cake', 
-        desc_bm: 'Nasi impit kiub tradisional, gandingan terbaik kuah kacang.', 
-        desc_en: 'Compact compressed cubed rice cakes perfect for peanut sauce dipping.', 
-        price: 2.00, 
-        unit_bm: 'biji', 
-        unit_en: 'pcs', 
+        desc_bm: 'Nasi impit kiub tradisional (1 ketul = 4 potong), gandingan terbaik kuah kacang.', 
+        desc_en: 'Compact compressed rice cakes (1 piece = 4 cuts) perfect for dipping.', 
+        price: 1.00, 
+        unit_bm: 'ketul', 
+        unit_en: 'ketul',
+        min: 1,
+        max: 500,
         image_url: 'menu4.webp' 
     }
 ];
@@ -64,7 +72,7 @@ const translations = {
         "about-title": "Warisan Cita Rasa Tradisional",
         "about-p1": "Kami mengekalkan kaedah perapan kuno selama 12 jam menggunakan arang kayu asli bagi membangkitkan aroma asap semulajadi yang unik.",
         "menu-title": "Menu & Pengiraan Tempahan",
-        "menu-desc": "Tulis kuantiti secara manual atau tekan butang tambah/tolak untuk perubahan 1 demi 1.",
+        "menu-desc": "Sate min 10 cucuk, max 1000 cucuk. Nasi impit dikira mengikut unit ketul.",
         "cart-title": "Rumusan Pesanan", "cart-empty": "Tiada item dipilih.", "cart-total": "Jumlah Anggaran:",
         "form-name": "Nama Penuh *", "form-loc": "Lokasi Pengambilan *", "form-time": "Waktu Pengambilan Semasa *",
         "cart-btn": "Hantar Tempahan WhatsApp", "loc-badge": "Status Kedai", "loc-title": "Lokasi Aktif Hari Ini",
@@ -79,7 +87,7 @@ const translations = {
         "about-title": "Traditional Heritage Taste Legacy",
         "about-p1": "We preserve a 12-hour ancient marination process utilizing natural wood charcoal to spark a distinct rustic smoky profile.",
         "menu-title": "Menu & Order Estimation",
-        "menu-desc": "Enter quantities manually or toggle the control buttons for a step-by-step 1 by 1 adjustment.",
+        "menu-desc": "Sate min 10 sticks, max 1000 sticks. Rice cake is calculated by pieces.",
         "cart-title": "Order Summary", "cart-empty": "No items selected.", "cart-total": "Estimated Total:",
         "form-name": "Full Name *", "form-loc": "Collection Destination *", "form-time": "Target Collection Time *",
         "cart-btn": "Dispatch WhatsApp Order", "loc-badge": "Stall Status", "loc-title": "Active Site Today",
@@ -129,6 +137,7 @@ function renderMenu() {
     menuData.forEach((item, index) => {
         const name = currentLang === 'ms' ? item.name_bm : item.name_en;
         const desc = currentLang === 'ms' ? item.desc_bm : item.desc_en;
+        const unit = currentLang === 'ms' ? item.unit_bm : item.unit_en;
         const qty = cartState[item.id] || 0;
         const chosenTransition = hoverTransitions[index % hoverTransitions.length];
 
@@ -138,8 +147,8 @@ function renderMenu() {
                     <img src="${item.image_url}" alt="${name}" class="w-full h-36 sm:h-40 object-cover">
                     <div class="p-4">
                         <div class="flex justify-between items-start gap-2">
-                            <h3 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">${name}</h3>
-                            <span class="text-amber-400 font-black text-xs">RM ${item.price.toFixed(2)}</span>
+                            <h3 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">${name} (${unit})</h3>
+                            <span class="text-amber-400 font-black text-xs whitespace-nowrap">RM ${item.price.toFixed(2)}</span>
                         </div>
                         <p class="text-gray-400 text-[11px] mt-2 font-light leading-relaxed">${desc}</p>
                     </div>
@@ -147,7 +156,12 @@ function renderMenu() {
                 <div class="p-4 pt-0">
                     <div class="flex items-center justify-between mt-3 bg-input-dark rounded-lg border border-neutral-800 p-1">
                         <button onclick="changeQtyOneByOne('${item.id}', -1)" class="text-gray-400 hover:text-red-500 px-3 py-1 font-bold text-sm transition">-</button>
-                        <input type="number" min="0" value="${qty}" id="input-qty-${item.id}" oninput="manualQtyInput('${item.id}', this.value)" class="w-12 text-center bg-transparent text-white font-mono font-bold text-xs focus:outline-none">
+                        
+                        <div class="flex items-center space-x-1">
+                            <input type="number" min="0" max="${item.max}" value="${qty}" id="input-qty-${item.id}" onchange="validateAndInputQty('${item.id}', this.value)" class="w-10 text-center bg-transparent text-white font-mono font-bold text-xs focus:outline-none">
+                            <span class="text-gray-500 text-[10px] font-bold pr-1">${unit}</span>
+                        </div>
+                        
                         <button onclick="changeQtyOneByOne('${item.id}', 1)" class="text-gray-400 hover:text-emerald-400 px-3 py-1 font-bold text-sm transition">+</button>
                     </div>
                 </div>
@@ -156,20 +170,45 @@ function renderMenu() {
 }
 
 function changeQtyOneByOne(itemId, change) {
+    const item = menuData.find(m => m.id === itemId);
     if (!cartState[itemId]) cartState[itemId] = 0;
-    cartState[itemId] += change;
+    
+    // Logik sekiranya butang + ditekan semasa kuantiti masih 0, naik terus ke had minimum
+    if (cartState[itemId] === 0 && change > 0) {
+        cartState[itemId] = item.min;
+    } else {
+        cartState[itemId] += change;
+    }
+
+    if (cartState[itemId] < item.min && change < 0) {
+        cartState[itemId] = 0; // Turun terus ke kosong jika bawah had minimum
+    }
+    
+    if (cartState[itemId] > item.max) cartState[itemId] = item.max;
     if (cartState[itemId] <= 0) delete cartState[itemId];
     
     document.getElementById(`input-qty-${itemId}`).value = cartState[itemId] || 0;
     updateCartDOM();
 }
 
-function manualQtyInput(itemId, val) {
+function validateAndInputQty(itemId, val) {
     let parsed = parseInt(val);
+    const item = menuData.find(m => m.id === itemId);
+
     if (isNaN(parsed) || parsed <= 0) {
         delete cartState[itemId];
+        document.getElementById(`input-qty-${itemId}`).value = 0;
     } else {
+        if (parsed < item.min) {
+            alert(`Minimum pesanan untuk menu ini adalah ${item.min} ${item.unit_bm}!`);
+            parsed = item.min;
+        }
+        if (parsed > item.max) {
+            alert(`Maksimum pesanan adalah ${item.max} ${item.unit_bm}!`);
+            parsed = item.max;
+        }
         cartState[itemId] = parsed;
+        document.getElementById(`input-qty-${itemId}`).value = parsed;
     }
     updateCartDOM();
 }
@@ -190,6 +229,7 @@ function updateCartDOM() {
     keys.forEach(id => {
         const item = menuData.find(m => m.id === id);
         const name = currentLang === 'ms' ? item.name_bm : item.name_en;
+        const unit = currentLang === 'ms' ? item.unit_bm : item.unit_en;
         const sub = item.price * cartState[id];
         total += sub;
 
@@ -197,7 +237,7 @@ function updateCartDOM() {
             <div class="flex justify-between items-center py-2.5">
                 <div>
                     <span class="text-white font-bold block">${name}</span>
-                    <span class="text-neutral-500 text-[11px]">${cartState[id]} x RM ${item.price.toFixed(2)}</span>
+                    <span class="text-neutral-500 text-[11px]">${cartState[id]} ${unit} x RM ${item.price.toFixed(2)}</span>
                 </div>
                 <span class="text-white font-mono">RM ${sub.toFixed(2)}</span>
             </div>`;
@@ -271,7 +311,7 @@ function sendWhatsAppOrder() {
     const time = document.getElementById('order-time').value;
     
     if (!name || !time || Object.keys(cartState).length === 0) {
-        const alertMsg = currentLang === 'ms' ? "Sila isi nama, masa pengambilan & pilih satay terlebih dahulu!" : "Please fill in your name, collection time & select satay first!";
+        const alertMsg = currentLang === 'ms' ? "Sila isi nama, masa pengambilan & pilih sate terlebih dahulu!" : "Please fill in your name, collection time & select sate first!";
         alert(alertMsg); 
         return;
     }
@@ -282,11 +322,17 @@ function sendWhatsAppOrder() {
         const item = menuData.find(m => m.id === id);
         const sub = item.price * cartState[id];
         total += sub;
-        msg += `${item.name_bm} x${cartState[id]}\nRM ${sub.toFixed(2)}\n`;
+        
+        if (id === 'nasi-impit') {
+            // Logik Nasi Impit: 1 ketul = 4 potong
+            const totalPotong = cartState[id] * 4;
+            msg += `${item.name_bm} x${cartState[id]} ketul (${totalPotong} potong)\nRM ${sub.toFixed(2)}\n`;
+        } else {
+            msg += `${item.name_bm} x${cartState[id]} cucuk\nRM ${sub.toFixed(2)}\n`;
+        }
     });
     msg += `────────────\nJumlah: RM ${total.toFixed(2)}\n\nNama: ${name}\nLokasi ambil: ${loc}\nJam ambil: ${time}\n\nTerima kasih Pak Mat!`;
     
-    // NOMBOR TELEFON DIKEMASKINI: 60143252403
     const targetPhoneNumber = "60143252403"; 
     window.open(`https://api.whatsapp.com/send?phone=${targetPhoneNumber}&text=${encodeURIComponent(msg)}`, '_blank');
 }
