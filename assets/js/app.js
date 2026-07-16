@@ -1,15 +1,15 @@
-// Database Tempatan Mengandungi Pautan Gambar Makanan Yang Betul & Tepat
+// Pengurusan Imej Tersendiri & Tepat Untuk Setiap Hidangan (High Contrast Unsplash Resolution)
 let menuData = [
     { 
         id: 'satay-ayam', 
         name_bm: 'Satay Ayam Pasaran', 
         name_en: 'Premium Chicken Satay', 
-        desc_bm: 'Daging ayam segar diperap serai wangi, empuk & juicy.', 
-        desc_en: 'Fresh chicken thigh pieces marinated in heritage lemongrass formulation.', 
+        desc_bm: 'Daging dada ayam segar diperap serai wangi, empuk & juicy.', 
+        desc_en: 'Fresh chicken breast marinated in heritage lemongrass formulation.', 
         price: 1.20, 
         unit_bm: 'cucuk', 
         unit_en: 'stick', 
-        image_url: 'https://images.unsplash.com/photo-1529692236671-f1f6e994a529?auto=format&fit=crop&w=500&q=80' // Gambar Bakar Satay Ayam Realistik
+        image_url: 'https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=500&q=80' // Gambar closeup satay ayam dibakar jelas
     },
     { 
         id: 'satay-daging', 
@@ -20,18 +20,18 @@ let menuData = [
         price: 1.50, 
         unit_bm: 'cucuk', 
         unit_en: 'stick', 
-        image_url: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=80' // Gambar Satay Daging Atas Pemanggang
+        image_url: 'https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=500&q=80' // Gambar satay daging atas pemanggang
     },
     { 
         id: 'satay-kambing', 
         name_bm: 'Satay Kambing Lumayan', 
         name_en: 'Juicy Mutton Satay', 
-        desc_bm: 'Daging kambing empuk tanpa bau hamis, rasa kaya rempah.', 
+        desc_bm: 'Daging kambing empuk premium tanpa bau hamis, kaya rempah.', 
         desc_en: 'Juicy local mutton cuts seasoned to absolute perfection.', 
         price: 2.00, 
         unit_bm: 'cucuk', 
         unit_en: 'stick', 
-        image_url: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=500&q=80' // Gambar Daging Kambing Bakar Berempah
+        image_url: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=500&q=80' // Gambar satay kambing/daging bakar
     },
     { 
         id: 'nasi-impit', 
@@ -42,19 +42,19 @@ let menuData = [
         price: 2.00, 
         unit_bm: 'biji', 
         unit_en: 'pcs', 
-        image_url: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=500&q=80' // Gambar Nasi Tradisional
+        image_url: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=500&q=80' // Gambar kuah kacang/nasi tradisi
     }
 ];
 
-// Jadual Lokasi Mingguan Beserta URL Pautan Google Maps Pasar Malam Yang Betul
+// Pautan Koordinat Pasar Malam Mengikut Hari Real-Time (Google Maps Sebenar)
 let weeklySchedule = [
     { id: 1, day_name_bm: 'Isnin', day_name_en: 'Monday', location_name_bm: 'Pasar Malam Taman ABC', location_name_en: 'Taman ABC Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+ABC' },
     { id: 2, day_name_bm: 'Selasa', day_name_en: 'Tuesday', location_name_bm: 'Tapak Niaga Keramat', location_name_en: 'Keramat Trading Site', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Keramat' },
-    { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Stall Closed', operating_hours: '-', is_closed: true, maps_url: '#' },
-    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru' },
+    { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' },
+    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
     { id: 5, day_name_bm: 'Jumaat', day_name_en: 'Friday', location_name_bm: 'Tapak Niaga Setiawangsa', location_name_en: 'Setiawangsa Trading Site', operating_hours: '5:00 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Setiawangsa' },
-    { id: 6, day_name_bm: 'Sabtu', day_name_en: 'Saturday', location_name_bm: 'Pasar Malam Melawati', location_name_en: 'Melawati Night Market', operating_hours: '4:30 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Melawati' },
-    { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Stall Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
+    { id: 6, day_name_bm: 'Sabtu', day_name_en: 'Saturday', location_name_bm: 'Pasar Malam Melawati', location_name_en: 'Melawati Night Market', operating_hours: '4:30 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+Melawati' },
+    { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
 ];
 
 let currentLang = 'ms';
@@ -80,54 +80,54 @@ function renderMenu() {
     const container = document.getElementById('menu-container');
     container.innerHTML = '';
     
-    menuData.forEach(item => {
+    // Senarai rawak class transition untuk elemen interaktif dinamik
+    const hoverTransitions = ['hover-lift', 'hover-bounce'];
+
+    menuData.forEach((item, index) => {
         const name = currentLang === 'ms' ? item.name_bm : item.name_en;
         const desc = currentLang === 'ms' ? item.desc_bm : item.desc_en;
         const unit = currentLang === 'ms' ? item.unit_bm : item.unit_en;
         const qty = cartState[item.id] || 0;
+        
+        // Memilih transition berbeza secara bergilir-gilir (randomized interaction layout)
+        const chosenTransition = hoverTransitions[index % hoverTransitions.length];
 
-        // Kad menu menggunakan gabungan transition rawak (card-rotate + hover effects)
         container.innerHTML += `
-            <div class="card-premium rounded-xl overflow-hidden shadow-lg card-rotate flex flex-col justify-between">
+            <div class="bg-card-dark rounded-xl overflow-hidden border border-neutral-800 flex flex-col justify-between ${chosenTransition}">
                 <div>
-                    <img src="${item.image_url}" alt="${name}" class="w-full h-44 object-cover transition transform hover:scale-110 duration-500">
+                    <img src="${item.image_url}" alt="${name}" class="w-full h-36 sm:h-40 object-cover">
                     <div class="p-4">
                         <div class="flex justify-between items-start gap-2">
-                            <h3 class="text-white font-bold text-sm uppercase tracking-wide">${name}</h3>
-                            <span class="text-amber-400 font-black text-xs whitespace-nowrap">RM ${item.price.toFixed(2)}/${unit}</span>
+                            <h3 class="text-white font-bold text-xs sm:text-sm uppercase tracking-wide">${name}</h3>
+                            <span class="text-amber-400 font-black text-xs">RM ${item.price.toFixed(2)}</span>
                         </div>
-                        <p class="text-gray-400 text-xs mt-2 font-light leading-relaxed">${desc}</p>
+                        <p class="text-gray-400 text-[11px] mt-2 font-light leading-relaxed">${desc}</p>
                     </div>
                 </div>
                 <div class="p-4 pt-0">
-                    <div class="flex items-center justify-between mt-4 bg-[#121212] rounded-lg border border-neutral-800 p-1">
-                        <!-- Perubahan 1 by 1 -->
-                        <button onclick="changeQtyOneByOne('${item.id}', -1)" class="text-gray-400 hover:text-red-500 px-3 py-1 font-bold text-base transition-all duration-200 transform hover:scale-125">-</button>
+                    <div class="flex items-center justify-between mt-3 bg-input-dark rounded-lg border border-neutral-800 p-1">
+                        <!-- Perubahan Kuantiti 1 demi 1 -->
+                        <button onclick="changeQtyOneByOne('${item.id}', -1)" class="text-gray-400 hover:text-red-500 px-3 py-1 font-bold text-sm transition">-</button>
                         
-                        <!-- User boleh tulis sendiri kuantiti -->
-                        <input type="number" min="0" value="${qty}" id="input-qty-${item.id}" oninput="manualQtyInput('${item.id}', this.value)" class="w-16 text-center bg-transparent text-white font-mono font-bold text-sm focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                        <!-- Input field untuk ditaip sendiri -->
+                        <input type="number" min="0" value="${qty}" id="input-qty-${item.id}" oninput="manualQtyInput('${item.id}', this.value)" class="w-12 text-center bg-transparent text-white font-mono font-bold text-xs focus:outline-none">
                         
-                        <button onclick="changeQtyOneByOne('${item.id}', 1)" class="text-gray-400 hover:text-emerald-400 px-3 py-1 font-bold text-base transition-all duration-200 transform hover:scale-125">+</button>
+                        <button onclick="changeQtyOneByOne('${item.id}', 1)" class="text-gray-400 hover:text-emerald-400 px-3 py-1 font-bold text-sm transition">+</button>
                     </div>
                 </div>
             </div>`;
     });
 }
 
-// Tambah/Tolak Kuantiti 1 demi 1
 function changeQtyOneByOne(itemId, change) {
     if (!cartState[itemId]) cartState[itemId] = 0;
     cartState[itemId] += change;
-    
-    if (cartState[itemId] <= 0) {
-        delete cartState[itemId];
-    }
+    if (cartState[itemId] <= 0) delete cartState[itemId];
     
     document.getElementById(`input-qty-${itemId}`).value = cartState[itemId] || 0;
     updateCartDOM();
 }
 
-// Boleh tulis kuantiti sendiri secara manual
 function manualQtyInput(itemId, val) {
     let parsed = parseInt(val);
     if (isNaN(parsed) || parsed <= 0) {
@@ -146,7 +146,7 @@ function updateCartDOM() {
 
     const keys = Object.keys(cartState);
     if (keys.length === 0) {
-        container.innerHTML = `<p class="text-neutral-500 text-center py-6">${currentLang === 'ms' ? 'Tiada item dipilih.' : 'No items selected.'}</p>`;
+        container.innerHTML = `<p class="text-neutral-500 text-center py-4">Tiada item dipilih.</p>`;
         totalDisplay.innerText = "RM 0.00";
         return;
     }
@@ -158,29 +158,28 @@ function updateCartDOM() {
         total += sub;
 
         container.innerHTML += `
-            <div class="flex justify-between items-center py-3 transition duration-300 hover:bg-neutral-800/40 px-2 rounded-lg">
+            <div class="flex justify-between items-center py-2.5">
                 <div>
-                    <span class="text-white font-bold text-xs block">${name}</span>
-                    <span class="text-gray-400 text-xs">${cartState[id]} x RM ${item.price.toFixed(2)}</span>
+                    <span class="text-white font-bold block">${name}</span>
+                    <span class="text-neutral-500 text-[11px]">${cartState[id]} x RM ${item.price.toFixed(2)}</span>
                 </div>
-                <span class="text-white font-mono text-xs">RM ${sub.toFixed(2)}</span>
+                <span class="text-white font-mono">RM ${sub.toFixed(2)}</span>
             </div>`;
     });
     totalDisplay.innerText = `RM ${total.toFixed(2)}`;
 }
 
-// Mengubah & Membaca Jadual Lokasi Mengikut Hari Real-Time Komputer/Telefon
+// Menetapkan Kedai Mengikut Waktu & Jadual Komputer Sistem Pelanggan (Real-Time)
 function initRealTimeLocationSystem() {
-    let dayIdx = new Date().getDay(); // 0 = Ahad, 1 = Isnin, dll.
-    if (dayIdx === 0) dayIdx = 7; // Tukar Ahad kepada index ke-7
+    let dayIdx = new Date().getDay(); 
+    if (dayIdx === 0) dayIdx = 7; 
     
-    const todayMatch = weeklySchedule.find(s => s.id === dayIdx) || weeklySchedule[3];
+    const todayMatch = weeklySchedule.find(s => s.id === dayIdx);
     const locName = currentLang === 'ms' ? todayMatch.location_name_bm : todayMatch.location_name_en;
     
     document.getElementById('today-location-display').innerText = locName;
     document.getElementById('today-hours-display').innerText = todayMatch.is_closed ? "" : `⏰ ${todayMatch.operating_hours}`;
     
-    // Kemaskini link butang Google Maps secara dinamik
     const mapsBtn = document.getElementById('live-google-maps-btn');
     if (todayMatch.is_closed) {
         mapsBtn.style.display = 'none';
@@ -189,12 +188,11 @@ function initRealTimeLocationSystem() {
         mapsBtn.href = todayMatch.maps_url;
     }
 
-    // Set lokasi lalai pilihan borang tempahan mengikut lokasi aktif hari ini
     const dropdown = document.getElementById('order-location');
     dropdown.innerHTML = '';
     weeklySchedule.forEach(s => {
         if (!s.is_closed) {
-            dropdown.innerHTML += `<option value="${s.location_name_bm}" ${s.id === dayIdx ? 'selected' : ''}>${currentLang === 'ms' ? s.location_name_bm : s.location_name_en}</option>`;
+            dropdown.innerHTML += `<option value="${s.location_name_bm}" ${s.id === dayIdx ? 'selected' : ''}>${s.location_name_bm}</option>`;
         }
     });
 }
@@ -207,18 +205,18 @@ function renderWeeklySchedule() {
     if (currentDayIdx === 0) currentDayIdx = 7;
 
     weeklySchedule.forEach(day => {
-        // Jika hari tersebut adalah hari ini, kita bagi highlight border/background cerah sedikit
         const isToday = day.id === currentDayIdx;
-        const todayHighlightClass = isToday ? 'bg-amber-500/10 border-l-4 border-amber-500 font-bold' : '';
+        // Warna kontras khusus (bg-neutral-900 jika hari ini) untuk paparan gelap mesra pengguna
+        const activeRowClass = isToday ? 'bg-amber-500/10 border-l-4 border-amber-500 font-bold' : '';
 
         container.innerHTML += `
-            <div class="flex flex-col sm:flex-row justify-between p-4 transition duration-300 hover:bg-neutral-100 ${todayHighlightClass}">
-                <span class="text-gray-900 font-bold text-xs uppercase w-24 flex items-center">
+            <div class="flex flex-col sm:flex-row justify-between p-3 sm:p-4 transition duration-200 hover:bg-neutral-800/40 ${activeRowClass}">
+                <span class="text-white font-bold uppercase w-28 flex items-center gap-1">
                     ${currentLang === 'ms' ? day.day_name_bm : day.day_name_en}
-                    ${isToday ? ' <span class="ml-1 text-[9px] bg-amber-500 text-black px-1.5 py-0.5 rounded-full font-black">HARI INI</span>' : ''}
+                    ${isToday ? '<span class="text-[9px] bg-amber-500 text-black px-1.5 py-0.5 rounded font-black">HARI INI</span>' : ''}
                 </span>
-                <span class="text-gray-600 text-xs flex-1 mt-1 sm:mt-0">${currentLang === 'ms' ? day.location_name_bm : day.location_name_en}</span>
-                <span class="text-amber-600 font-mono text-xs mt-1 sm:mt-0 font-bold">${day.is_closed ? '' : day.operating_hours}</span>
+                <span class="text-neutral-300 flex-1 mt-1 sm:mt-0">${currentLang === 'ms' ? day.location_name_bm : day.location_name_en}</span>
+                <span class="text-amber-400 font-mono mt-1 sm:mt-0 font-bold">${day.is_closed ? '' : day.operating_hours}</span>
             </div>`;
     });
 }
@@ -229,8 +227,7 @@ function sendWhatsAppOrder() {
     const time = document.getElementById('order-time').value;
     
     if (!name || !time || Object.keys(cartState).length === 0) {
-        alert("Sila isi maklumat nama, masa, dan kuantiti pesanan anda!"); 
-        return;
+        alert("Sila isi nama, masa pengambilan & pilih satay terlebih dahulu!"); return;
     }
     
     let msg = "Assalamualaikum Pak Mat 😊\nSy nak buat tempahan.\n────────────\n";
