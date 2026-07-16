@@ -52,10 +52,9 @@ let weeklySchedule = [
     { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
     { id: 5, day_name_bm: 'Jumaat', day_name_en: 'Friday', location_name_bm: 'Tapak Niaga Setiawangsa', location_name_en: 'Setiawangsa Trading Site', operating_hours: '5:00 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Setiawangsa' },
     { id: 6, day_name_bm: 'Sabtu', day_name_en: 'Saturday', location_name_bm: 'Pasar Malam Melawati', location_name_en: 'Melawati Night Market', operating_hours: '4:30 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+Melawati' },
-    { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Stall Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
+    { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
 ];
 
-// Pengurusan Data Bahasa Penuh (Kecuali Pengekalan Jenama Satay Pak Mat)
 const translations = {
     ms: {
         "nav-home": "Utama", "nav-about": "Asal Usul", "nav-menu": "Menu", "nav-location": "Lokasi",
@@ -99,12 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function toggleLanguage() {
     currentLang = currentLang === 'ms' ? 'en' : 'ms';
-    document.getElementById('lang-toggle').innerText = currentLang === 'ms' ? 'MY' : 'EN';
+    // Kemas kini teks butang penukar bahasa berserta emoji bendera
+    document.getElementById('lang-toggle').innerText = currentLang === 'ms' ? '🇲🇾 MY' : '🇬🇧 EN';
     applyLocalization();
 }
 
 function applyLocalization() {
-    // 1. Terjemah elemen statik HTML berserta placeholder input
     document.querySelectorAll("[data-i18n]").forEach(element => {
         const key = element.getAttribute("data-i18n");
         if (translations[currentLang][key]) {
@@ -117,7 +116,6 @@ function applyLocalization() {
         nameInput.placeholder = translations[currentLang]['placeholder-name'];
     }
 
-    // 2. Lukis semula menu & jadual mingguan untuk mengemas kini data teks bahasa dari objek data array
     renderMenu();
     initRealTimeLocationSystem();
     renderWeeklySchedule();
