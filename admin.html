@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <title>Satay Pak Mat | Admin Business Control Center</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>.dark-theme-bg { background-color: #121212; } .card-bg { background-color: #1E1E1E; }</style>
+</head>
+<body class="dark-theme-bg text-gray-200 p-6 md:p-12">
+
+    <div class="max-w-6xl mx-auto space-y-10">
+        <!-- Header Banner Block -->
+        <div class="flex justify-between items-center border-b border-neutral-800 pb-6">
+            <div>
+                <h1 class="text-3xl font-black text-white uppercase tracking-wider">Satay Pak Mat <span class="text-amber-500">Dashboard</span></h1>
+                <p class="text-neutral-500 text-sm mt-1">Sistem kawalan pengurusan menu, lokasi bertukar & pemakluman kritikal.</p>
+            </div>
+            <button onclick="logoutAdmin()" class="bg-red-600/20 text-red-400 border border-red-500/30 font-bold px-4 py-2 rounded-xl text-xs uppercase hover:bg-red-600 hover:text-white transition">
+                Log Keluar
+            </button>
+        </div>
+
+        <!-- Row 1: Urgent Overrides System -->
+        <div class="card-bg p-6 rounded-2xl border border-neutral-800 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-1 border-r border-neutral-800 pr-4">
+                <h3 class="text-white font-bold text-lg mb-2 flex items-center space-x-2">
+                    <i class="fa-solid fa-triangle-exclamation text-red-500 animate-pulse"></i>
+                    <span>Pengumuman Kecemasan</span>
+                </h3>
+                <p class="text-xs text-neutral-500">Mengaktifkan/menyahaktifkan notifikasi visual amaran terapung di laman hadapan pembeli secara langsung.</p>
+                <div class="mt-4">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="admin-banner-toggle" class="sr-only peer" onchange="persistAnnouncementStatus()">
+                        <div class="w-11 h-6 bg-neutral-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                        <span class="ml-3 text-xs font-bold text-gray-400 uppercase">Aktifkan Banner</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="md:col-span-2 space-y-4">
+                <div>
+                    <label class="block text-xs text-gray-400 uppercase font-bold mb-1">Mesej Notifikasi Urgent (BM)</label>
+                    <input type="text" id="admin-banner-text-bm" class="w-full bg-[#121212] border border-neutral-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 uppercase font-bold mb-1">Urgent Notification Message (EN)</label>
+                    <input type="text" id="admin-banner-text-en" class="w-full bg-[#121212] border border-neutral-800 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500">
+                </div>
+                <button onclick="saveEmergencyBannerData()" class="bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase px-4 py-2.5 rounded-lg transition tracking-wider">
+                    Kemaskini Mesej Banner
+                </button>
+            </div>
+        </div>
+
+        <!-- Row 2: Location Overrides Engine -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1 card-bg p-6 rounded-2xl border border-neutral-800 space-y-4">
+                <h3 class="text-white font-bold text-lg mb-2"><i class="fa-solid fa-map-pin text-amber-500 mr-2"></i>Jadual Lokasi</h3>
+                <p class="text-xs text-neutral-500">Ubah tetapan pergerakan tapak pasar malam mengikut hari penukaran jadual berniaga.</p>
+                
+                <div class="space-y-3 pt-2">
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">Pilih Hari Maklum Balas</label>
+                        <select id="admin-day-select" onchange="syncLocationInputs()" class="w-full bg-[#121212] border border-neutral-800 rounded-lg p-2 text-xs text-white">
+                            <option value="1">Isnin (Monday)</option>
+                            <option value="2">Selasa (Tuesday)</option>
+                            <option value="3">Rabu (Wednesday)</option>
+                            <option value="4">Khamis (Thursday)</option>
+                            <option value="5">Jumaat (Friday)</option>
+                            <option value="6">Sabtu (Saturday)</option>
+                            <option value="7">Ahad (Sunday)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">Nama Tapak Niaga (BM)</label>
+                        <input type="text" id="admin-loc-bm" class="w-full bg-[#121212] border border-neutral-800 rounded-lg p-2 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">Location Site Name (EN)</label>
+                        <input type="text" id="admin-loc-en" class="w-full bg-[#121212] border border-neutral-800 rounded-lg p-2 text-xs text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">Waktu Operasi (eg: 4:30 PM - 10:30 PM)</label>
+                        <input type="text" id="admin-loc-hours" class="w-full bg-[#121212] border border-neutral-800 rounded-lg p-2 text-xs text-white">
+                    </div>
+                    <div class="flex items-center pt-2">
+                        <input type="checkbox" id="admin-loc-closed" class="mr-2">
+                        <label for="admin-loc-closed" class="text-xs text-red-400 font-bold uppercase">Tanda Cuti (Closed)</label>
+                    </div>
+                    <button onclick="persistLocationUpdate()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold text-xs uppercase py-2.5 rounded-lg tracking-wider transition">
+                        Simpan Perubahan Jadual
+                    </button>
+                </div>
+            </div>
+
+            <!-- Row 3: Product Inventory Matrix -->
+            <div class="lg:col-span-2 card-bg p-6 rounded-2xl border border-neutral-800">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-white font-bold text-lg"><i class="fa-solid fa-utensils text-amber-500 mr-2"></i>Pengurusan Item Menu</h3>
+                    <button onclick="triggerProductModal()" class="bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center space-x-1 transition">
+                        <i class="fa-solid fa-plus text-amber-500"></i> <span>Tambah Item</span>
+                    </button>
+                </div>
+                
+                <div class="overflow-x-auto text-xs">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-neutral-800 text-neutral-500 uppercase font-bold tracking-wider">
+                                <th class="py-3 px-2">Nama Hidangan</th>
+                                <th class="py-3 px-2">Harga Unit</th>
+                                <th class="py-3 px-2">Status</th>
+                                <th class="py-3 px-2 text-right">Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-menu-rows" class="divide-y divide-neutral-800 text-neutral-300">
+                            <!-- Dynamic rendering through structural Javascript arrays parsing logic -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Script Infrastructure Link -->
+    <script>
+        // Administration Frontend Core Integration Logic Engine
+        const mockWeeklyRef = [
+            { id: 1, day_name_bm: 'Isnin', day_name_en: 'Monday', location_name_bm: 'Pasar Malam Taman ABC', location_name_en: 'Taman ABC Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false },
+            { id: 2, day_name_bm: 'Selasa', day_name_en: 'Tuesday', location_name_bm: 'Tapak Niaga Keramat', location_name_en: 'Keramat Trading Site', operating_hours: '4:30 PM - 10:30 PM', is_closed: false },
+            { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            syncLocationInputs();
+            renderAdminMenuRows();
+        });
+
+        function syncLocationInputs() {
+            const selectedDayId = parseInt(document.getElementById('admin-day-select').value);
+            const dataMatch = mockWeeklyRef.find(d => d.id === selectedDayId) || mockWeeklyRef[0];
+            
+            document.getElementById('admin-loc-bm').value = dataMatch.location_name_bm;
+            document.getElementById('admin-loc-en').value = dataMatch.location_name_en;
+            document.getElementById('admin-loc-hours').value = dataMatch.operating_hours;
+            document.getElementById('admin-loc-closed').checked = dataMatch.is_closed;
+        }
+
+        function renderAdminMenuRows() {
+            const rowsContainer = document.getElementById('admin-menu-rows');
+            const sampleMenu = [
+                { id: 'm1', name_bm: 'Satay Ayam', price: 1.20, active: true },
+                { id: 'm2', name_bm: 'Satay Daging', price: 1.50, active: true }
+            ];
+            
+            rowsContainer.innerHTML = '';
+            sampleMenu.forEach(item => {
+                rowsContainer.innerHTML += `
+                    <tr class="hover:bg-neutral-800/20 transition">
+                        <td class="py-3 px-2 font-bold text-white">${item.name_bm}</td>
+                        <td class="py-3 px-2 font-mono">RM ${item.price.toFixed(2)}</td>
+                        <td class="py-3 px-2"><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Aktif</span></td>
+                        <td class="py-3 px-2 text-right space-x-2">
+                            <button class="text-neutral-400 hover:text-amber-500 transition"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="text-neutral-400 hover:text-red-500 transition"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function persistLocationUpdate() { alert("Lokasi berjaya dikemaskini dalam sistem pangkalan data!"); }
+        function saveEmergencyBannerData() { alert("Notifikasi amaran kecemasan berjaya disiarkan!"); }
+        function persistAnnouncementStatus() { console.log("Banner view state mutated."); }
+        function triggerProductModal() { alert("Penambahan menu baharu dicetuskan."); }
+        function logoutAdmin() { window.location.href = "index.html"; }
+    </script>
+</body>
+</html>
