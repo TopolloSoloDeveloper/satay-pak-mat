@@ -2,7 +2,7 @@ let menuData = [
     { 
         id: 'satay-ayam', 
         name_bm: 'Satay Ayam Pasaran', 
-        name_en: 'Premium Chicken Satay', 
+        name_en: 'Market Chicken Satay', 
         desc_bm: 'Daging dada ayam segar diperap serai wangi, empuk & juicy.', 
         desc_en: 'Fresh chicken breast marinated in heritage lemongrass formulation.', 
         price: 1.20, 
@@ -48,26 +48,76 @@ let menuData = [
 let weeklySchedule = [
     { id: 1, day_name_bm: 'Isnin', day_name_en: 'Monday', location_name_bm: 'Pasar Malam Taman ABC', location_name_en: 'Taman ABC Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+ABC' },
     { id: 2, day_name_bm: 'Selasa', day_name_en: 'Tuesday', location_name_bm: 'Tapak Niaga Keramat', location_name_en: 'Keramat Trading Site', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Keramat' },
-    { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' },
-    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Khamis', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Campung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
+    { id: 3, day_name_bm: 'Rabu', day_name_en: 'Wednesday', location_name_bm: 'Cuti Rehat', location_name_en: 'Stall Closed', operating_hours: '-', is_closed: true, maps_url: '#' },
+    { id: 4, day_name_bm: 'Khamis', day_name_en: 'Thursday', location_name_bm: 'Pasar Malam Kampung Baru', location_name_en: 'Kampung Baru Night Market', operating_hours: '4:30 PM - 10:30 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Kampung+Baru+Kuala+Lumpur' },
     { id: 5, day_name_bm: 'Jumaat', day_name_en: 'Friday', location_name_bm: 'Tapak Niaga Setiawangsa', location_name_en: 'Setiawangsa Trading Site', operating_hours: '5:00 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Tapak+Niaga+Setiawangsa' },
     { id: 6, day_name_bm: 'Sabtu', day_name_en: 'Saturday', location_name_bm: 'Pasar Malam Melawati', location_name_en: 'Melawati Night Market', operating_hours: '4:30 PM - 11:00 PM', is_closed: false, maps_url: 'https://maps.google.com/?q=Pasar+Malam+Taman+Melawati' },
-    { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
+    { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Stall Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
 ];
+
+// Pengurusan Data Bahasa Penuh (Kecuali Pengekalan Jenama Satay Pak Mat)
+const translations = {
+    ms: {
+        "nav-home": "Utama", "nav-about": "Asal Usul", "nav-menu": "Menu", "nav-location": "Lokasi",
+        "hero-sub": "Resepi Asli Sejak 1988", "hero-title": "Segar Dari Bara Api Setiap Hari",
+        "hero-desc": "Daging premium diperap rapi bersama ramuan herba tradisional asli, dibakar sempurna.",
+        "hero-btn-view": "Lihat Menu", "hero-btn-loc": "Lokasi Hari Ini",
+        "about-title": "Warisan Cita Rasa Tradisional",
+        "about-p1": "Kami mengekalkan kaedah perapan kuno selama 12 jam menggunakan arang kayu asli bagi membangkitkan aroma asap semulajadi yang unik.",
+        "menu-title": "Menu & Pengiraan Tempahan",
+        "menu-desc": "Tulis kuantiti secara manual atau tekan butang tambah/tolak untuk perubahan 1 demi 1.",
+        "cart-title": "Rumusan Pesanan", "cart-empty": "Tiada item dipilih.", "cart-total": "Jumlah Anggaran:",
+        "form-name": "Nama Penuh *", "form-loc": "Lokasi Pengambilan *", "form-time": "Waktu Pengambilan Semasa *",
+        "cart-btn": "Hantar Tempahan WhatsApp", "loc-badge": "Status Kedai", "loc-title": "Lokasi Aktif Hari Ini",
+        "loc-today-title": "Hari Ini Kami Berniaga Di:", "loc-btn-maps": "Buka Google Maps Lokasi Hari Ini",
+        "loc-table-title": "Jadual Kontingensi Operasi Mingguan", "tag-today": "HARI INI", "placeholder-name": "Nama penuh anda"
+    },
+    en: {
+        "nav-home": "Home", "nav-about": "Heritage", "nav-menu": "Menu", "nav-location": "Location",
+        "hero-sub": "Original Recipe Since 1988", "hero-title": "Fresh From Charcoal Fire Daily",
+        "hero-desc": "Premium meat meticulously marinated with authentic traditional herbs, perfectly flame-grilled.",
+        "hero-btn-view": "View Menu", "hero-btn-loc": "Today's Site",
+        "about-title": "Traditional Heritage Taste Legacy",
+        "about-p1": "We preserve a 12-hour ancient marination process utilizing natural wood charcoal to spark a distinct rustic smoky profile.",
+        "menu-title": "Menu & Order Estimation",
+        "menu-desc": "Enter quantities manually or toggle the control buttons for a step-by-step 1 by 1 adjustment.",
+        "cart-title": "Order Summary", "cart-empty": "No items selected.", "cart-total": "Estimated Total:",
+        "form-name": "Full Name *", "form-loc": "Collection Destination *", "form-time": "Target Collection Time *",
+        "cart-btn": "Dispatch WhatsApp Order", "loc-badge": "Stall Status", "loc-title": "Active Site Today",
+        "loc-today-title": "Today We Are Operating At:", "loc-btn-maps": "Open Google Maps Route Today",
+        "loc-table-title": "Standard Contingency Weekly Schedule Blueprint", "tag-today": "TODAY", "placeholder-name": "Your full name"
+    }
+};
 
 let currentLang = 'ms';
 let cartState = {};
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderMenu();
     initRealTimeLocationSystem();
-    renderWeeklySchedule();
-    updateCartDOM();
+    applyLocalization();
 });
 
 function toggleLanguage() {
     currentLang = currentLang === 'ms' ? 'en' : 'ms';
-    document.getElementById('lang-toggle').innerText = currentLang === 'ms' ? '🇲🇾 BM' : '🇬🇧 English';
+    document.getElementById('lang-toggle').innerText = currentLang === 'ms' ? 'MY' : 'EN';
+    applyLocalization();
+}
+
+function applyLocalization() {
+    // 1. Terjemah elemen statik HTML berserta placeholder input
+    document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (translations[currentLang][key]) {
+            element.innerText = translations[currentLang][key];
+        }
+    });
+    
+    const nameInput = document.getElementById('order-name');
+    if (nameInput) {
+        nameInput.placeholder = translations[currentLang]['placeholder-name'];
+    }
+
+    // 2. Lukis semula menu & jadual mingguan untuk mengemas kini data teks bahasa dari objek data array
     renderMenu();
     initRealTimeLocationSystem();
     renderWeeklySchedule();
@@ -135,7 +185,7 @@ function updateCartDOM() {
 
     const keys = Object.keys(cartState);
     if (keys.length === 0) {
-        container.innerHTML = `<p class="text-neutral-500 text-center py-4">Tiada item dipilih.</p>`;
+        container.innerHTML = `<p class="text-neutral-500 text-center py-4">${translations[currentLang]['cart-empty']}</p>`;
         totalDisplay.innerText = "RM 0.00";
         return;
     }
@@ -165,24 +215,32 @@ function initRealTimeLocationSystem() {
     const todayMatch = weeklySchedule.find(s => s.id === dayIdx);
     const locName = currentLang === 'ms' ? todayMatch.location_name_bm : todayMatch.location_name_en;
     
-    document.getElementById('today-location-display').innerText = locName;
-    document.getElementById('today-hours-display').innerText = todayMatch.is_closed ? "" : `⏰ ${todayMatch.operating_hours}`;
+    const displayNode = document.getElementById('today-location-display');
+    if (displayNode) displayNode.innerText = locName;
+
+    const hoursNode = document.getElementById('today-hours-display');
+    if (hoursNode) hoursNode.innerText = todayMatch.is_closed ? "" : `⏰ ${todayMatch.operating_hours}`;
     
     const mapsBtn = document.getElementById('live-google-maps-btn');
-    if (todayMatch.is_closed) {
-        mapsBtn.style.display = 'none';
-    } else {
-        mapsBtn.style.display = 'inline-flex';
-        mapsBtn.href = todayMatch.maps_url;
+    if (mapsBtn) {
+        if (todayMatch.is_closed) {
+            mapsBtn.style.display = 'none';
+        } else {
+            mapsBtn.style.display = 'inline-flex';
+            mapsBtn.href = todayMatch.maps_url;
+        }
     }
 
     const dropdown = document.getElementById('order-location');
-    dropdown.innerHTML = '';
-    weeklySchedule.forEach(s => {
-        if (!s.is_closed) {
-            dropdown.innerHTML += `<option value="${s.location_name_bm}" ${s.id === dayIdx ? 'selected' : ''}>${s.location_name_bm}</option>`;
-        }
-    });
+    if (dropdown) {
+        dropdown.innerHTML = '';
+        weeklySchedule.forEach(s => {
+            if (!s.is_closed) {
+                const optionLabel = currentLang === 'ms' ? s.location_name_bm : s.location_name_en;
+                dropdown.innerHTML += `<option value="${s.location_name_bm}" ${s.id === dayIdx ? 'selected' : ''}>${optionLabel}</option>`;
+            }
+        });
+    }
 }
 
 function renderWeeklySchedule() {
@@ -194,14 +252,17 @@ function renderWeeklySchedule() {
     weeklySchedule.forEach(day => {
         const isToday = day.id === currentDayIdx;
         const activeRowClass = isToday ? 'bg-amber-500/10 border-l-4 border-amber-500 font-bold' : '';
+        const dayLabel = currentLang === 'ms' ? day.day_name_bm : day.day_name_en;
+        const locLabel = currentLang === 'ms' ? day.location_name_bm : day.location_name_en;
+        const tagToday = translations[currentLang]['tag-today'];
 
         container.innerHTML += `
             <div class="flex flex-col sm:flex-row justify-between p-3 sm:p-4 transition duration-200 hover:bg-neutral-800/40 ${activeRowClass}">
                 <span class="text-white font-bold uppercase w-28 flex items-center gap-1">
-                    ${currentLang === 'ms' ? day.day_name_bm : day.day_name_en}
-                    ${isToday ? '<span class="text-[9px] bg-amber-500 text-black px-1.5 py-0.5 rounded font-black">HARI INI</span>' : ''}
+                    ${dayLabel}
+                    ${isToday ? `<span class="text-[9px] bg-amber-500 text-black px-1.5 py-0.5 rounded font-black">${tagToday}</span>` : ''}
                 </span>
-                <span class="text-neutral-300 flex-1 mt-1 sm:mt-0">${currentLang === 'ms' ? day.location_name_bm : day.location_name_en}</span>
+                <span class="text-neutral-300 flex-1 mt-1 sm:mt-0">${locLabel}</span>
                 <span class="text-amber-400 font-mono mt-1 sm:mt-0 font-bold">${day.is_closed ? '' : day.operating_hours}</span>
             </div>`;
     });
@@ -213,7 +274,9 @@ function sendWhatsAppOrder() {
     const time = document.getElementById('order-time').value;
     
     if (!name || !time || Object.keys(cartState).length === 0) {
-        alert("Sila isi nama, masa pengambilan & pilih satay terlebih dahulu!"); return;
+        const alertMsg = currentLang === 'ms' ? "Sila isi nama, masa pengambilan & pilih satay terlebih dahulu!" : "Please fill in your name, collection time & select satay first!";
+        alert(alertMsg); 
+        return;
     }
     
     let msg = "Assalamualaikum Pak Mat 😊\nSy nak buat tempahan.\n────────────\n";
