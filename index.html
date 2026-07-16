@@ -39,9 +39,18 @@
         </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="sticky top-0 bg-cover bg-center border-b border-neutral-800 z-40" style="background-image: linear-gradient(rgba(11, 15, 23, 0.75), rgba(11, 15, 23, 0.85)), url('bannerbg.webp');">
-        <div class="max-w-7xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
+    <!-- Navigation Bar (Menggunakan Video Latar Belakang bannerbg.mp4 secara Seamless) -->
+    <nav class="sticky top-0 h-16 sm:h-20 border-b border-neutral-800 z-40 overflow-hidden bg-black/40">
+        <!-- Enjin Video HTML5 Background Layer -->
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40 pointer-events-none">
+            <source src="bannerbg.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Overlay Gelap Supaya Menu Teks Sentiasa Jelas Kontras -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0b0f17]/80 z-0"></div>
+
+        <!-- Kandungan Utama Nav Bar -->
+        <div class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center justify-between z-10">
             <a href="#" class="text-xl sm:text-2xl font-black text-white uppercase tracking-wider">Satay <span class="text-amber-500">Pak Mat</span></a>
             <div class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#home" class="hover-glow transition duration-200" data-i18n="nav-home">Utama</a>
@@ -49,7 +58,6 @@
                 <a href="#menu" class="hover-glow transition duration-200" data-i18n="nav-menu">Menu</a>
                 <a href="#location" class="hover-glow transition duration-200" data-i18n="nav-location">Lokasi</a>
             </div>
-            <!-- Butang Tukar Bahasa Beserta Bendera Semula -->
             <button id="lang-toggle" onclick="toggleLanguage()" class="bg-neutral-800 text-xs px-3 py-1.5 rounded-full border border-neutral-700 font-bold hover:bg-amber-500 hover:text-black transition">🇲🇾 MY</button>
         </div>
     </nav>
@@ -150,7 +158,6 @@
         </div>
     </section>
 
-    <!-- Footer Dikemaskini Sepenuhnya Mengenai Hak Cipta Khas -->
     <footer class="bg-[#070a0f] py-8 text-center text-[10px] text-neutral-600 border-t border-neutral-900">
         <p>&copy; 2026 Satay Pak Mat by TopolloSoloDeveloper</p>
     </footer>
