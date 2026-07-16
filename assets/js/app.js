@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function toggleLanguage() {
     currentLang = currentLang === 'ms' ? 'en' : 'ms';
-    // Kemas kini teks butang penukar bahasa berserta emoji bendera
     document.getElementById('lang-toggle').innerText = currentLang === 'ms' ? '🇲🇾 MY' : '🇬🇧 EN';
     applyLocalization();
 }
@@ -286,5 +285,8 @@ function sendWhatsAppOrder() {
         msg += `${item.name_bm} x${cartState[id]}\nRM ${sub.toFixed(2)}\n`;
     });
     msg += `────────────\nJumlah: RM ${total.toFixed(2)}\n\nNama: ${name}\nLokasi ambil: ${loc}\nJam ambil: ${time}\n\nTerima kasih Pak Mat!`;
-    window.open(`https://api.whatsapp.com/send?phone=60123456789&text=${encodeURIComponent(msg)}`, '_blank');
+    
+    // NOMBOR TELEFON DIKEMASKINI: 60143252403
+    const targetPhoneNumber = "60143252403"; 
+    window.open(`https://api.whatsapp.com/send?phone=${targetPhoneNumber}&text=${encodeURIComponent(msg)}`, '_blank');
 }
