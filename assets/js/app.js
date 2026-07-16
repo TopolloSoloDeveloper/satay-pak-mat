@@ -3,8 +3,8 @@ let menuData = [
         id: 'sate-ayam', 
         name_bm: 'Sate Ayam Pasaran', 
         name_en: 'Market Chicken Sate', 
-        desc_bm: 'Daging dada ayam segar diperap serai wangi, empuk & juicy.', 
-        desc_en: 'Fresh chicken breast marinated in heritage lemongrass formulation.', 
+        desc_bm: 'Daging dada ayam fresh diperap serai wangi, memang empuk & juicy gila.', 
+        desc_en: 'Fresh chicken breast marinated in lemongrass, super tender & juicy.', 
         price: 1.20, 
         unit_bm: 'cucuk', 
         unit_en: 'cucuk',
@@ -16,8 +16,8 @@ let menuData = [
         id: 'sate-daging', 
         name_bm: 'Sate Daging Batang Pinang', 
         name_en: 'Tenderloin Beef Sate', 
-        desc_bm: 'Daging lembu premium tanpa lemak, tekstur lembut dikunyah.', 
-        desc_en: 'Lean premium beef cutlets injected with rich local traditional spices.', 
+        desc_bm: 'Daging lembu premium tak ada lemak, lembut gila bila kunyah.', 
+        desc_en: 'Premium lean beef cutlets with rich traditional spices. So soft!', 
         price: 1.50, 
         unit_bm: 'cucuk', 
         unit_en: 'cucuk',
@@ -29,8 +29,8 @@ let menuData = [
         id: 'sate-kambing', 
         name_bm: 'Sate Kambing Lumayan', 
         name_en: 'Juicy Mutton Sate', 
-        desc_bm: 'Daging kambing empuk premium tanpa bau hamis, kaya rempah.', 
-        desc_en: 'Juicy local mutton cuts seasoned to absolute perfection.', 
+        desc_bm: 'Daging kambing empuk kaw-kaw, tak ada bau hamis & penuh rempah.', 
+        desc_en: 'Juicy local mutton cuts seasoned to perfection. No gamey smell.', 
         price: 2.50, 
         unit_bm: 'cucuk', 
         unit_en: 'cucuk',
@@ -42,8 +42,8 @@ let menuData = [
         id: 'nasi-impit', 
         name_bm: 'Nasi Impit Padat', 
         name_en: 'Traditional Rice Cake', 
-        desc_bm: 'Nasi impit kiub tradisional (1 ketul = 4 potong), gandingan terbaik kuah kacang.', 
-        desc_en: 'Compact compressed rice cakes (1 piece = 4 cuts) perfect for dipping.', 
+        desc_bm: 'Nasi impit kiub (1 ketul = 4 potong), ngam sangat layan dengan kuah kacang.', 
+        desc_en: 'Compressed rice cakes (1 piece = 4 cuts), perfect match for peanut sauce.', 
         price: 1.00, 
         unit_bm: 'ketul', 
         unit_en: 'ketul',
@@ -63,36 +63,37 @@ let weeklySchedule = [
     { id: 7, day_name_bm: 'Ahad', day_name_en: 'Sunday', location_name_bm: 'Cuti Rehat', location_name_en: 'Closed', operating_hours: '-', is_closed: true, maps_url: '#' }
 ];
 
+// Database Bahasa Rojak / Slang Moden (Kecuali Pengekalan Jenama Satay Pak Mat)
 const translations = {
     ms: {
-        "nav-home": "Utama", "nav-about": "Asal Usul", "nav-menu": "Menu", "nav-location": "Lokasi",
-        "hero-sub": "Resepi Asli Sejak 1988", "hero-title": "Segar Dari Bara Api Setiap Hari",
-        "hero-desc": "Daging premium diperap rapi bersama ramuan herba tradisional asli, dibakar sempurna.",
-        "hero-btn-view": "Lihat Menu", "hero-btn-loc": "Lokasi Hari Ini",
-        "about-title": "Warisan Cita Rasa Tradisional",
-        "about-p1": "Kami mengekalkan kaedah perapan kuno selama 12 jam menggunakan arang kayu asli bagi membangkitkan aroma asap semulajadi yang unik.",
-        "menu-title": "Menu & Pengiraan Tempahan",
-        "menu-desc": "Sate min 10 cucuk, max 1000 cucuk. Nasi impit dikira mengikut unit ketul.",
-        "cart-title": "Rumusan Pesanan", "cart-empty": "Tiada item dipilih.", "cart-total": "Jumlah Anggaran:",
-        "form-name": "Nama Penuh *", "form-loc": "Lokasi Pengambilan *", "form-time": "Waktu Pengambilan Semasa *",
-        "cart-btn": "Hantar Tempahan WhatsApp", "loc-badge": "Status Kedai", "loc-title": "Lokasi Aktif Hari Ini",
-        "loc-today-title": "Hari Ini Kami Berniaga Di:", "loc-btn-maps": "Buka Google Maps Lokasi Hari Ini",
-        "loc-table-title": "Jadual Kontingensi Operasi Mingguan", "tag-today": "HARI INI", "placeholder-name": "Nama penuh anda"
+        "nav-home": "Home", "nav-about": "Kisah Kami", "nav-menu": "Menu", "nav-location": "Lokasi",
+        "hero-sub": "Resepi Ori Sejak 1988", "hero-title": "Fresh Bakar Dari Bara Api Tiap Hari",
+        "hero-desc": "Daging premium diperap rapi dengan rempah rahsia tradisi, dibakar padu punya.",
+        "hero-btn-view": "Tengok Menu", "hero-btn-loc": "Port Hari Ini",
+        "about-title": "Kisah Resepi Turun-Temurun",
+        "about-p1": "Kita kekalkan cara bakar stail lama guna arang kayu asli selama 12 jam. Bau asap dia memang ngam so rasa sate tu lain macam power dia.",
+        "menu-title": "Menu & Kira Harga",
+        "menu-desc": "Sate min 10 cucuk, max 1000 cucuk ya. Klik je butang tambah atau taip terus kuantiti.",
+        "cart-title": "Order List Anda", "cart-empty": "Bakul kosong lagi bro.", "cart-total": "Total Anggaran:",
+        "form-name": "Nama Penuh *", "form-loc": "Drop-off / Lokasi Ambil *", "form-time": "Jam Nak Ambil *",
+        "cart-btn": "Send Order ke WhatsApp", "loc-badge": "Shop Status", "loc-title": "Port Berniaga Hari Ini",
+        "loc-today-title": "Hari ini kita setup booth kat:", "loc-btn-maps": "Waze / Google Maps Ke Sini",
+        "loc-table-title": "Jadual Tapak Niaga Mingguan", "tag-today": "LIVE NOW", "placeholder-name": "Taip nama penuh anda"
     },
     en: {
-        "nav-home": "Home", "nav-about": "Heritage", "nav-menu": "Menu", "nav-location": "Location",
-        "hero-sub": "Original Recipe Since 1988", "hero-title": "Fresh From Charcoal Fire Daily",
-        "hero-desc": "Premium meat meticulously marinated with authentic traditional herbs, perfectly flame-grilled.",
-        "hero-btn-view": "View Menu", "hero-btn-loc": "Today's Site",
-        "about-title": "Traditional Heritage Taste Legacy",
-        "about-p1": "We preserve a 12-hour ancient marination process utilizing natural wood charcoal to spark a distinct rustic smoky profile.",
-        "menu-title": "Menu & Order Estimation",
-        "menu-desc": "Sate min 10 sticks, max 1000 sticks. Rice cake is calculated by pieces.",
-        "cart-title": "Order Summary", "cart-empty": "No items selected.", "cart-total": "Estimated Total:",
-        "form-name": "Full Name *", "form-loc": "Collection Destination *", "form-time": "Target Collection Time *",
-        "cart-btn": "Dispatch WhatsApp Order", "loc-badge": "Stall Status", "loc-title": "Active Site Today",
-        "loc-today-title": "Today We Are Operating At:", "loc-btn-maps": "Open Google Maps Route Today",
-        "loc-table-title": "Standard Contingency Weekly Schedule Blueprint", "tag-today": "TODAY", "placeholder-name": "Your full name"
+        "nav-home": "Home", "nav-about": "Our Story", "nav-menu": "Menu", "nav-location": "Location",
+        "hero-sub": "Original Recipe Since 1988", "hero-title": "Freshly Grilled On Charcoal Fire",
+        "hero-desc": "Premium meat marinated with top-tier secret spices, perfectly grilled daily.",
+        "hero-btn-view": "Check Menu", "hero-btn-loc": "Today's Spot",
+        "about-title": "Our Authentic Heritage Legacy",
+        "about-p1": "We keep it real with our 12-hour traditional marination and natural wood charcoal grill. That premium smoky flavor hits different!",
+        "menu-title": "Menu & Price Estimator",
+        "menu-desc": "Sate min 10 sticks, max 1000 sticks. Tap + / - or just type your quantity directly.",
+        "cart-title": "Your Order List", "cart-empty": "Your cart is currently empty.", "cart-total": "Estimated Total:",
+        "form-name": "Full Name *", "form-loc": "Pick-up Point *", "form-time": "Pick-up Time *",
+        "cart-btn": "Send Order to WhatsApp", "loc-badge": "Stall Analytics", "loc-title": "Where We At Today",
+        "loc-today-title": "Today we are operating at:", "loc-btn-maps": "Open Google Maps Route",
+        "loc-table-title": "Weekly Night Market Location Schedule", "tag-today": "TODAY", "placeholder-name": "Type your full name here"
     }
 };
 
@@ -173,7 +174,6 @@ function changeQtyOneByOne(itemId, change) {
     const item = menuData.find(m => m.id === itemId);
     if (!cartState[itemId]) cartState[itemId] = 0;
     
-    // Logik sekiranya butang + ditekan semasa kuantiti masih 0, naik terus ke had minimum
     if (cartState[itemId] === 0 && change > 0) {
         cartState[itemId] = item.min;
     } else {
@@ -181,7 +181,7 @@ function changeQtyOneByOne(itemId, change) {
     }
 
     if (cartState[itemId] < item.min && change < 0) {
-        cartState[itemId] = 0; // Turun terus ke kosong jika bawah had minimum
+        cartState[itemId] = 0; 
     }
     
     if (cartState[itemId] > item.max) cartState[itemId] = item.max;
@@ -200,11 +200,11 @@ function validateAndInputQty(itemId, val) {
         document.getElementById(`input-qty-${itemId}`).value = 0;
     } else {
         if (parsed < item.min) {
-            alert(`Minimum pesanan untuk menu ini adalah ${item.min} ${item.unit_bm}!`);
+            alert(`Paling sikit kena order ${item.min} ${item.unit_bm} bro!`);
             parsed = item.min;
         }
         if (parsed > item.max) {
-            alert(`Maksimum pesanan adalah ${item.max} ${item.unit_bm}!`);
+            alert(`Maksimum order ${item.max} ${item.unit_bm} je sekali borong!`);
             parsed = item.max;
         }
         cartState[itemId] = parsed;
@@ -311,7 +311,7 @@ function sendWhatsAppOrder() {
     const time = document.getElementById('order-time').value;
     
     if (!name || !time || Object.keys(cartState).length === 0) {
-        const alertMsg = currentLang === 'ms' ? "Sila isi nama, masa pengambilan & pilih sate terlebih dahulu!" : "Please fill in your name, collection time & select sate first!";
+        const alertMsg = currentLang === 'ms' ? "Isi nama, masa & pilih sate dulu bro!" : "Please fill in your name, pick-up time & select sate first!";
         alert(alertMsg); 
         return;
     }
@@ -324,7 +324,6 @@ function sendWhatsAppOrder() {
         total += sub;
         
         if (id === 'nasi-impit') {
-            // Logik Nasi Impit: 1 ketul = 4 potong
             const totalPotong = cartState[id] * 4;
             msg += `${item.name_bm} x${cartState[id]} ketul (${totalPotong} potong)\nRM ${sub.toFixed(2)}\n`;
         } else {
