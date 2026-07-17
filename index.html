@@ -39,11 +39,11 @@
         </div>
     </div>
 
-    <!-- Navigation Bar (Menggunakan Video Latar Belakang bannerbg.mp4 secara Seamless) -->
+    <!-- Navigation Bar (Menggunakan Video Latar Belakang bannerbg.webm secaran Seamless) -->
     <nav class="sticky top-0 h-16 sm:h-20 border-b border-neutral-800 z-40 overflow-hidden bg-black/40">
-        <!-- Enjin Video HTML5 Background Layer -->
+        <!-- Enjin Video HTML5 dengan format WebM berkualiti tinggi -->
         <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40 pointer-events-none">
-            <source src="bannerbg.mp4" type="video/mp4">
+            <source src="bannerbg.webm" type="video/webm">
         </video>
         
         <!-- Overlay Gelap Supaya Menu Teks Sentiasa Jelas Kontras -->
@@ -108,6 +108,63 @@
                     
                     <div class="space-y-4 text-xs mb-6">
                         <div>
+                            <label class="block text-gray-400 font-medium mb-1" data-i18n="form-name">Nama Penuh *</label>
+                            <input type="text" id="order-name" required placeholder="Nama penuh anda" class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 font-medium mb-1" data-i18n="form-loc">Lokasi Pengambilan *</label>
+                            <select id="order-location" class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition"></select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 font-medium mb-1" data-i18n="form-time">Waktu Pengambilan Semasa *</label>
+                            <input type="time" id="order-time" required class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition">
+                        </div>
+                    </div>
+                    <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl flex items-center justify-center space-x-2 transition uppercase text-xs tracking-wider">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span data-i18n="cart-btn">Hantar Tempahan WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location System -->
+    <section id="location" class="bg-card-dark py-20 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 mobile-container grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div class="space-y-4">
+                <span class="text-[10px] bg-amber-500/10 text-amber-400 font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider" data-i18n="loc-badge">Status Kedai</span>
+                <h2 class="text-2xl font-black text-white uppercase tracking-tight">Lokasi Aktif Hari Ini</h2>
+                
+                <div class="bg-app-dark p-5 rounded-xl border border-neutral-800 shadow-lg">
+                    <div class="text-neutral-500 text-[10px] uppercase font-bold tracking-wider" data-i18n="loc-today-title">Hari Ini Kami Berniaga Di:</div>
+                    <div id="today-location-display" class="text-white font-black text-xl uppercase mt-1 tracking-wide">Memuatkan lokasi...</div>
+                    <div id="today-hours-display" class="text-amber-400 font-bold text-xs mt-1"></div>
+                    
+                    <div class="pt-4">
+                        <a id="live-google-maps-btn" href="#" target="_blank" class="w-full inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-xl shadow transition text-xs uppercase tracking-wide">
+                            <i class="fa-solid fa-map-location-dot mr-2"></i> <span data-i18n="loc-btn-maps">Buka Google Maps Lokasi Hari Ini</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-2 bg-app-dark rounded-xl border border-neutral-800 overflow-hidden shadow-lg">
+                <div class="p-4 sm:p-5 border-b border-neutral-800"><h3 class="text-white font-bold text-sm uppercase tracking-wider" data-i18n="loc-table-title">Jadual Kontingensi Operasi Mingguan</h3></div>
+                <div id="weekly-schedule-container" class="divide-y divide-neutral-800 text-xs">
+                    <!-- Diisi menerusi JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#070a0f] py-8 text-center text-[10px] text-neutral-600 border-t border-neutral-900">
+        <p>&copy; 2026 Satay Pak Mat by TopolloSoloDeveloper</p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
                             <label class="block text-gray-400 font-medium mb-1" data-i18n="form-name">Nama Penuh *</label>
                             <input type="text" id="order-name" required placeholder="Nama penuh anda" class="w-full bg-input-dark border border-neutral-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-amber-500 transition">
                         </div>
